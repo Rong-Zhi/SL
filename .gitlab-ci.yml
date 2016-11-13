@@ -1,0 +1,35 @@
+barrett:
+    script:
+        - mkdir build
+        - cd build
+        - cmake -D BUILD_barrett=ON ..
+        - make install -j8
+        - cd ..
+        - rm build -r
+
+barrett_clang:
+    script:
+        - mkdir build
+        - cd build
+        - cmake -D BUILD_barrett=ON -D CMAKE_CXX_COMPILER=/usr/bin/clang++ -D CMAKE_C_COMPILER=/usr/bin/clang ..
+        - make install -j8
+        - cd ..
+        - rm build -r
+
+barrett_opti:
+    script:
+        - mkdir build
+        - cd build
+        - cmake -D BUILD_barrett=ON -D BUILD_barrett_VISION_OPTITRACK=ON ..
+        - make install -j8
+        - cd ..
+        - rm build -r
+
+barrett_clang_opti:
+    script:
+        - mkdir build
+        - cd build
+        - cmake -D BUILD_barrett=ON -D CMAKE_CXX_COMPILER=/usr/bin/clang++ -D CMAKE_C_COMPILER=/usr/bin/clang -D BUILD_barrett_VISION_OPTITRACK=ON ..
+        - make install -j8
+        - cd ..
+        - rm build -r

@@ -1,0 +1,197 @@
+/* this file contains gains and max control for each DOF
+   Note: the file is parsed according to keywords, after the keyword,
+         the values need to come in the correct sequence */
+
+/* Very low gains */
+R_SFE 120.     7.    .0   75
+R_SAA 200.    10.    .0  125
+R_HR   20.     2.    .0   39
+R_EB   15.     2.    .0   30
+R_WR    3      0.1   .0    3
+R_WFE   3      0.1   .0    4
+R_WAA   0.3    0.01  .0    2
+
+
+/* format: keyword, gain_th, gain_thd, gain_int, max_control  */
+R_SFE 200.     7.     .0   75
+R_SAA 300.    15.     .0  125
+R_HR  100.     5      .0   39
+R_EB   50.     2.5    .0   30
+R_WR   20       .5    .0    3
+R_WFE  30       .5    .0    4
+R_WAA  10       .25   .0    2
+
+/* Very low gains */
+R_SFE 120.     7.    .0   75
+R_SAA 200.    10.    .0  125
+R_HR   20.     2.    .0   39
+R_EB   15.     2.    .0   30
+R_WR    3      0.1   .0    3
+R_WFE   3      0.1   .0    4
+R_WAA   0.3    0.01  .0    2
+
+R_SFE  30.     3.    .0   75
+R_SAA  45.     4.    .0  125
+R_HR   20.     2.    .0   39
+R_EB   15.     1.    .0   30
+R_WR    1.     .1    .0    3
+R_WFE   1.     .1    .0    4
+R_WAA   0.3    .01   .0    2
+
+R_SFE 120.    10.    .0   75
+R_SAA 200.    20.    .0  125
+R_HR   40.    12.    .0   39
+R_EB   35.    15.    .0   30
+R_WR    3      0.1   .0    3
+R_WFE   3      0.1   .0    4
+R_WAA   0.3    0.01  .0    2
+
+
+
+R_SFE 200.     7.     .01  500
+R_SAA 300.    15.     .01  225
+R_HR  100.     5      .01   39
+R_EB   50.     2.0    .01   30
+R_WR   20       .5    .01    3
+R_WFE  20       .5    .01    4
+R_WAA   0.5     .0275  .01    2
+
+/* new XBROBOT gains */
+R_SFE 120.    10.    .0   75
+R_SAA 200.    20.    .0  125
+R_HR   40.    12.    .0   39
+R_EB   35.    15.    .0   30
+R_WR    3      0.1   .0    3
+R_WFE   3      0.1   .0    4
+R_WAA   0.3    0.01  .0    2
+
+R_SFE 120.    10.    2.5   75
+R_SAA 200.    15.     .0  125
+R_HR   25.     7.     .0   39
+R_EB   20.     5.     .0   30
+R_WR    2.5     .1    .0    3
+R_WFE   2.5     .1    .0    4
+R_WAA   0.3     .01   .01   2
+
+/* new XBROBOT gains */
+R_SFE 200.    10.    .0   75
+R_SAA 200.    20.    .0  125
+R_HR   40.    12.    .0   39
+R_EB   35.    15.    .0   30
+R_WR    3      0.1   .0    3
+R_WFE   3      0.1   .0    4
+R_WAA   0.3    0.01  .0    2
+
+R_SFE 300.     9.    .0   75
+R_SAA 200.    35.    .0  125
+R_HR   40.    12.    .0   39
+R_EB   35.    15.    .0   30
+R_WR    3      0.1   .0    3
+R_WFE   3      0.1   .0    4
+R_WAA   0.3    0.01  .0    2
+
+R_SFE  90.    10.    .0   75
+R_SAA 125.    20.    .0  125
+R_HR   25.     7.    .0   39
+R_EB   20.     5.    .0   30
+R_WR    2.5     .1   .0    3
+R_WFE   2.5     .1   .0    4
+R_WAA   0.3     .01  .0    2
+
+
+R_SFE  90.    20.    .0   75
+R_SAA 125.    30.    .0  125
+R_HR   40.    12.    .0   39
+R_EB   35.    15.    .0   30
+R_WR    2.5     .1   .0    3
+R_WFE   2.5     .1   .0    4
+R_WAA   0.3     .01  .0    2
+
+
+/* The double of these gains is admissable */
+R_SFE  90.    10.    .0   75
+R_SAA 125.    20.    .0  125
+R_HR   25.     7.    .0   39
+R_EB   20.     5.    .0   30
+R_WR    2.5     .1   .0    3
+R_WFE   2.5     .1   .0    4
+R_WAA   0.3     .01  .0    2
+
+
+
+
+/* The double of these gains is admissable */
+R_SFE  90.    10.    .0   75
+R_SAA 125.    20.    .0  125
+R_HR   25.     7.    .0   39
+R_EB   20.     5.    .0   30
+R_WR    2.5     .1   .0    3
+R_WFE   2.5     .1   .0    4
+R_WAA   0.3     .01  .0    2
+
+/* Very low gains */
+R_SFE  30.     3.    .0   75
+R_SAA  45.     4.    .0  125
+R_HR   20.     2.    .0   39
+R_EB   15.     1.    .0   30
+R_WR    1.     .1    .0    3
+R_WFE   1.     .1    .0    4
+R_WAA   0.3    .01   .0    2
+
+
+
+
+
+R_SFE  1.8  10     2.5  75
+R_SAA  5.0  20     5   125
+R_HR   1.2  10     2.5  39
+R_EB   1.0   2.5   0.5  30
+R_WR   0.1   0.5   0.5   3
+R_WFE  0.1   0.5   0.5   4
+R_WAA  0.02  0.1   0.1   2     
+
+  R_SFE  30.     3.    .0   75
+  R_SAA  45.     4.    .0  125
+  R_HR   20.     2.    .0   39
+  R_EB   15.     1.    .0   30
+  R_WR    1.     .1    .0    3
+  R_WFE   1.     .1    .0    4
+  R_WAA   0.3    .01   .0    2
+
+
+
+  R_SFE  30.     3.    .0   75
+  R_SAA  45.     4.    .0  125
+  R_HR   20.     2.    .0   39
+  R_EB   35.    15.    .0   30
+  R_WR    1.     .1    .0    3
+  R_WFE   1.     .1    .0    4
+  R_WAA   0.3    .01   .0    2
+
+  R_SFE  90.    20.    .0   75
+  R_SAA 125.    30.    .0  125
+  R_HR   40.    12.    .0   39
+  R_EB   45.    25.    .0   30
+  R_WR    2.5     .1   .0    3
+  R_WFE   2.5     .1   .0    4
+  R_WAA   0.3     .01  .0    2
+
+  R_SFE  30.     3.    .0   75
+  R_SAA  45.     4.    .0  125
+  R_HR   20.     2.    .0   39
+  R_EB    6.     1.    .0   30
+  R_WR    1.     .1   .0    3
+  R_WFE   1.     .1   .0    4
+  R_WAA   0.3     .01  .0    2
+
+
+
+
+
+  R_SFE  60.     5.    .0   75
+  R_SAA  85.     8.    .0  125
+  R_HR   40.    12.    .0   39
+  R_EB   12.     5.    .0   30
+  R_WR    2.5     .1   .0    3
+  R_WFE   2.5     .1   .0    4
+  R_WAA   0.3     .01  .0    2

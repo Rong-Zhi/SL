@@ -1,0 +1,36 @@
+/* This file specifies the contacts that should be checked. All contacts are lines between two 
+   links of the robot. Each line in the file specifies one contact line with the following specs:
+
+   start_link end_link active n_check start_cond  end_cond
+
+   start_link: name of the start link of the line
+   end_link  : name of the end link of the line
+   active    : 0 or 1 for non-active or active
+   n_checks  : number of check points between start and and point
+   start_cond: 
+   end_cond  : can be "full", "half", or "orth". 
+
+               full: contact forces in all direction are permissible
+               half: contact forces in the half space including the line are permissible. The space
+                     is terminated by the plane perpendicular to the line which includes the start
+		     (or end) point
+               orth: contact forces orthogonal to the line are permitted
+
+   Note that C/C++-style comments are permitted and will be stripped. ':',';','=' are stripped, too.
+
+*/
+
+SHOULDER	BEFORE_ELBOW	1	10	half	orth
+BEFORE_ELBOW 	ELBOW		1	2	orth	orth
+ELBOW		AFTER_ELBOW	1	2	orth	orth
+AFTER_ELBOW	WRIST		1	10	orth	orth
+WRIST		PALM		1	2	orth	half
+PALM		RFAXIS		1	3	orth	orth
+RFAXIS		RF1ST		1	5	orth	orth
+RF1ST		RF2ND		1	5	orth	half
+PALM		LFAXIS		1	3	orth	orth
+LFAXIS		LF1ST		1	5	orth	orth
+LF1ST		LF2ND		1	5	orth	half
+PALM		MFAXIS		1	5	orth 	orth
+MFAXIS		MF1ST		1	5	orth	orth
+MF1ST		MF2ND		1	5	orth	half

@@ -1,0 +1,167 @@
+**********************************
+Matlab Interface using shared libs
+**********************************
+Rueckert E., IAS, TU Darmstadt 2014
+rueckert@ias.tu-darmstadt.de
+
+Content: 
+----------------------------------
+1. Function overview
+2. Installation / Compilation
+3. Use cases in Matlab
+4. Notes / Common Issues
+----------------------------------
+
+1. Function overview:
+
+Each function is named Mex[FunctionName][RobotName].cpp. Using this definition multiple robots can be controlled within Matlab (in contrast to SL). When compiling the mex functions the suffix [RobotName] will be replace by your specification of the robot's name, e.g., Darias. In the following 
+- two functions for forwards integration, 
+- two functions for computing forward kinematics and 
+- one function for computing the forwards dynamics and its derivatives are discussed.
+
+
+1.1 FORWARD DYNAMICS INTEGRATION: MexSimTraj[RobotName].cpp 
+
+Given a linear time varying feedback controller of the form u(t) = K(t)q(t) + k(t) and the initial state q0, the functions simulates the movement plan. The result are the generated joint angle and control trajectories.
+	* Interfaces
+	[q u] = f(l, L, q0, dt)
+	[q u] = f(l, L, q0, dt, flgUseCtlLimitFBC)
+	[q u] = f(l, L, q0, dt, flgUseCtlLimitFBC, stdAdditiveControlNoise)
+	[q u] = f(l, L, q0, dt, flgUseCtlLimitFBC, stdAdditiveControlNoise, uMinMax)
+
+dt is the time step (in seconds). If flgUseCtlLimitFBC is greater than zero, the control limits are read from the config files and applied. If the argument stdAdditiveControlNoise is provided additive control noise is simulated. uMinMax is a vector specifying symetric control limits (umax = -umin).   
+
+1.2 FORWARD DYNAMICS INTEGRATION using Torques: MexSimControls[RobotName].cpp 
+	
+This function computes the forward dynamics integration given a sequence of states q (joint angles and joint velocities) and a sequence of torque controls u. It returns the integrated trajectory qIntegrated which is of the same dimension as q.
+	* Interfacce
+	[qIntegrated] = f(q, u, dt)
+
+
+
+1.3 FORWARD KINEMATICS TRAJECTORY: MexComputeEFTraj[RobotName].cpp 
+
+Given a sequence of joint angle trajectories q the function returns the corresponding end effector coordinates (for each end effector specified in the config files) and the the quaternions. 
+
+Usage: libMexComputeEFTraj[RobotName] <joints> <inEuler> <endeff>
+	<joints> [N_DOFSxN]: joint trajectory of N timeSteps.
+	<inEuler> [true/false]: If true the orientation is returned in euler angles (x,y,z order) otherwise in quaternions. Default is false.
+	<endeff> [N_ENDEFFSx6]: The rigid offsets from the last link to the respective endeffectors. The six entries correspond to x,y,z offset and x,y,z euler angles for each end
+        effector.
+
+	Returns <numEndeff>, <endeffPose>
+	<numEndeff> [1x1]: the number of end effectors
+	<endeffPose> [<dim>*<numEndeff>xN]: The end effector pose for each given joint state. <dim> is either 6 or 7 depending if <inEuler> is true or false.
+
+
+1.4 FORWARD KINEMATICS Jaccobian: MexComputeJacobian[ROBOTNAME].cpp
+
+Given a single vector of joint angles the function returns the number of end effectors, the end effectors and the Jaccobian. 
+	* Interface 
+	[numEndEffector, EF, Jaccobian] = f(jointAngles)
+
+
+
+1.5 FORWARD DYNAMICS AND DERIVATIVES: MexFwdDyn[ROBOTNAME].cpp 
+
+This function computes the forward dynamcis, qDot = fdyn(q,u) and its partial derivatives if requested. The input arguments q and u are vectors denoting the robot state at a single time step. This function is, e.g., used in stochastic optimal control methods that rely on linearizations of the system dynamics. 
+	* Interfaces
+	[qDot] = f(q, u)
+	[qDot, qDotq(derivative w.r.t. q), qDotu(derivative w.r.t. u)] = f(q, u)
+
+
+
+2. Installation
+
+In your CMakeLists.txt file:
+
+# uncomment this line to add the Matlab shared lib Interface
+# compiles mex functions and copies them to the build folder
+# see Readme.txt in IAS/MexLib folder for details on how to use the interface
+include(add_shared_lib_interface)
+
+
+3. Use cases in Matlab 
+
+3.1 FORWARD DYNAMICS INTEGRATION: libMexSimTraj   
+    
+    N_DOF = 5; %5=biorob,26=nao,%44=darias
+    szU = N_DOF;
+    szX = 2*N_DOF;
+    numTimeSteps = 500;
+    n = numTimeSteps;
+    dt = 0.002;
+    
+    q0 = [0.0, -0.6, 0.6, -0.4, 0.0    0.0   0.0  0.0   0.0    0.0]';
+    q = repmat(q0,1,n);
+    Kphi = [200 300 50 20 10];
+    Kphidot = [7 15 2.5 0.5 0.25];
+    
+    l = zeros(szU, n); 
+    L = zeros(szU, szX, n); 
+ 
+    for uId=1:szU
+        L(uId, uId,1) = -Kphi(uId);
+        L(uId, uId+szU,1) = -Kphidot(uId);
+        l(uId,:) = + Kphi(uId)*q(uId,:) + Kphidot(uId)*q(szU + uId,:) ;
+    end   
+ 
+    for t=2:n
+        L(:,:,t) = L(:,:,1); 
+    end 
+    %L(1,:,1) = 0.1*[1:10];
+    try
+        [q u] = libMexSimTraj(l, L, q0, dt);
+    catch err
+        err
+    end
+
+
+3.2 FORWARD DYNAMICS INTEGRATION using Torques: libMexSimControls 
+
+    N_DOF = 44; %44=darias,5=biorob,26=nao
+    szU = N_DOF;
+    szX = 2*N_DOF;
+    numTimeSteps = 5;
+    n = numTimeSteps;
+    dt = 0.002;
+    
+    q = randn(szX,n);
+    u = 5*randn(szU,n);
+    
+    qnext = libMexSimControls(q,u,dt);
+
+
+3.3 FORWARD KINEMATICS TRAJECTORY: libMexComputeEFTraj
+
+    N_DOF = 44; %44=darias,5=biorob,26=nao
+    qPos = zeros(N_DOF,100);
+    [numEF, EFTraj] = libMexComputeEFTraj(qPos);
+ 
+
+3.4 FORWARD KINEMATICS Jaccobian: libMexComputeJacobian
+
+    N_DOF = 44; %44=darias,5=biorob,26=nao
+    qPos = rand(N_DOF,1);
+    [numEF, EFTraj, Jaccobian] = libMexComputeJacobian(qPos);
+	
+
+3.5 FORWARD DYNAMICS AND DERIVATIVES: libMexFwdDyn 
+
+    N_DOF = 44; %44=darias,5=biorob,26=nao
+    x = randn(2*N_DOF,1);
+    u = randn(N_DOF,1);
+    try
+        xdot = libMexFwdDyn(x,u);
+	[xdot, xdotx, xdotu] = libMexFwdDyn(x,u);
+    catch err
+        err
+    end
+    
+
+4. Notes 
+
+Make sure that the created link to the config folder (e.g., in the MexLib folder, ls -l shows, config -> ../config). 
+You need to execute the libraries in the build folder such that the config folder can be located!
+
+

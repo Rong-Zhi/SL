@@ -1,0 +1,170 @@
+(* Content-type: application/mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 6.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       145,          7]
+NotebookDataLength[      5585,        161]
+NotebookOptionsPosition[      4607,        127]
+NotebookOutlinePosition[      5230,        151]
+CellTagsIndexPosition[      5187,        148]
+WindowFrame->Normal
+ContainsDynamic->False*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+  "SetDirectory", "[", "\"\<~/robolab/shared/RigidBodyDynamics\>\"", "]"}], 
+  ";"}]], "Input",
+ CellChangeTimes->{{3.482093872666485*^9, 3.482093878253232*^9}, 
+   3.4820940006991243`*^9, {3.497009451340699*^9, 3.497009465878571*^9}}],
+
+Cell[BoxData[
+ RowBox[{"<<", "RigidBodyDynamics.m"}]], "Input",
+ AspectRatioFixed->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"SetDirectory", "[", "\"\<~/robolab/shared/barrett/math\>\"", "]"}],
+   ";"}]], "Input",
+ CellChangeTimes->{
+  3.4818536892851753`*^9, {3.497009469187669*^9, 3.497009470105139*^9}, {
+   3.497009536796851*^9, 3.4970095480057383`*^9}, {3.497009579425864*^9, 
+   3.4970095819533987`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"InvDynNE", "[", 
+   RowBox[{"\"\<barrett.dyn\>\"", ",", "\"\<barrett\>\"", ",", 
+    RowBox[{"{", 
+     RowBox[{"0", ",", "0", ",", 
+      RowBox[{"-", "gravity"}]}], "}"}]}], "]"}], ";"}]], "Input",
+ CellChangeTimes->{{3.481853689311232*^9, 3.481853689328013*^9}, {
+   3.494093095543626*^9, 3.494093095609358*^9}, 3.494093140098762*^9, {
+   3.497009473628831*^9, 3.497009475484633*^9}},
+ AspectRatioFixed->True],
+
+Cell[BoxData[
+ RowBox[{"InvDynArt", "[", 
+  RowBox[{"\"\<barrett.dyn\>\"", ",", "\"\<barrett\>\"", ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "0", ",", 
+     RowBox[{"-", "gravity"}]}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.481853689361579*^9, 3.481853689375556*^9}, {
+  3.497009477004668*^9, 3.4970094786127777`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"ParmEst", "[", 
+  RowBox[{"\"\<barrett.dyn\>\"", ",", "\"\<barrett\>\"", ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "0", ",", 
+     RowBox[{"-", "gravity"}]}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.481853689410563*^9, 3.481853689427149*^9}, {
+  3.497009480196808*^9, 3.4970094820446367`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"ForDynComp", "[", 
+  RowBox[{"\"\<barrett.dyn\>\"", ",", "\"\<barrett\>\"", ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "0", ",", 
+     RowBox[{"-", "gravity"}]}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.481853689460827*^9, 3.481853689476288*^9}, {
+  3.494168585057461*^9, 3.494168587440949*^9}, {3.4941687290272617`*^9, 
+  3.494168731251788*^9}, {3.497009483956612*^9, 3.497009485244808*^9}},
+ AspectRatioFixed->True],
+
+Cell[BoxData[
+ RowBox[{"ForDynArt", "[", 
+  RowBox[{"\"\<barrett.dyn\>\"", ",", "\"\<barrett\>\"", ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "0", ",", 
+     RowBox[{"-", "gravity"}]}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.481853689460827*^9, 3.481853689476288*^9}, {
+  3.494168585057461*^9, 3.494168587440949*^9}, {3.4941687290272617`*^9, 
+  3.494168731251788*^9}, {3.494209264539959*^9, 3.494209266497325*^9}, {
+  3.4970094871877937`*^9, 3.4970094887727203`*^9}},
+ AspectRatioFixed->True],
+
+Cell[BoxData[
+ RowBox[{"LinkEndpointKinematics", "[", 
+  RowBox[{"\"\<barrett.dyn\>\"", ",", "\"\<barrett\>\""}], "]"}]], "Input",
+ CellChangeTimes->{{3.4818536895123873`*^9, 3.481853689527801*^9}, {
+  3.497009490412565*^9, 3.497009491820459*^9}},
+ AspectRatioFixed->True],
+
+Cell[BoxData[
+ RowBox[{"OpenGLKinematics", "[", 
+  RowBox[{"\"\<barrett.dyn\>\"", ",", "\"\<barrett\>\""}], "]"}]], "Input",
+ CellChangeTimes->{{3.481853689561265*^9, 3.481853689577087*^9}, {
+  3.4970094935644703`*^9, 3.497009495148534*^9}}],
+
+Cell[BoxData[
+ RowBox[{"GeometricJacobian", "[", 
+  RowBox[{"\"\<barrett.dyn\>\"", ",", 
+   RowBox[{"{", "108", "}"}], ",", "\"\<barrett\>\""}], "]"}]], "Input",
+ CellChangeTimes->{{3.481853689611086*^9, 3.481853689628043*^9}, {
+  3.497009497444583*^9, 3.497009499358729*^9}}],
+
+Cell[BoxData[
+ RowBox[{"InertiaMatrix", "[", 
+  RowBox[{"\"\<barrett.dyn\>\"", ",", "\"\<barrett\>\""}], "]"}]], "Input",
+ CellChangeTimes->{{3.481853689662973*^9, 3.48185368967903*^9}, {
+  3.497009501314475*^9, 3.4970095031724997`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"LinkInformation", "[", 
+  RowBox[{"\"\<barrett.dyn\>\"", ",", "\"\<barrett\>\""}], "]"}]], "Input",
+ CellChangeTimes->{{3.481853689712346*^9, 3.481853689728887*^9}, {
+  3.497009504620528*^9, 3.49700950633853*^9}}]
+},
+WindowToolbars->{},
+CellGrouping->Automatic,
+WindowSize->{622, 549},
+WindowMargins->{{147, Automatic}, {Automatic, 5}},
+PrivateNotebookOptions->{"ColorPalette"->{RGBColor, 128}},
+ShowSelection->True,
+ShowCellLabel->True,
+ShowCellTags->False,
+RenderingOptions->{"ObjectDithering"->True,
+"RasterDithering"->False},
+CharacterEncoding->"MacintoshAutomaticEncoding",
+FrontEndVersion->"6.0 for Mac OS X x86 (32-bit) (June 19, 2007)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[568, 21, 270, 6, 27, "Input"],
+Cell[841, 29, 88, 2, 27, "Input"],
+Cell[932, 33, 319, 7, 27, "Input"],
+Cell[1254, 42, 447, 10, 27, "Input"],
+Cell[1704, 54, 330, 7, 27, "Input"],
+Cell[2037, 63, 328, 7, 27, "Input"],
+Cell[2368, 72, 451, 9, 27, "Input"],
+Cell[2822, 83, 503, 10, 27, "Input"],
+Cell[3328, 95, 272, 5, 27, "Input"],
+Cell[3603, 102, 241, 4, 27, "Input"],
+Cell[3847, 108, 276, 5, 27, "Input"],
+Cell[4126, 115, 237, 4, 27, "Input"],
+Cell[4366, 121, 237, 4, 27, "Input"]
+}
+]
+*)
+
+(* End of internal cache information *)

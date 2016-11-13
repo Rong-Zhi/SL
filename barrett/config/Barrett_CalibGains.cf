@@ -1,0 +1,14 @@
+/* this file contains gains and uff to move the robot slowly towards 
+   the joint limits so that it reaches position q0 */
+
+/* format: keyword, gain_th, gain_thd, gain_int, uff, q0  */
+
+R_SFE  12.       1.     .0   -10  -2.67
+R_SAA  20.       2.     .0    45   1.97
+R_HR    4.0      0.6    .0    15   2.838
+R_EB    3.5      0.6    .0   -15  -0.915 
+R_WR    0.3      0.01   .0   -5  -4.854
+R_WFE   0.3      0.01   .0   -5   -1.63
+R_WAA   0.03     0.001  .0    2   -3.88 
+
+Ufffff -10, +45, 15, -15, -5, -5, -2

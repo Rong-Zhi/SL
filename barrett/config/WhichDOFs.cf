@@ -1,0 +1,18 @@
+/* this file contains a list of DOFs that are computed by each processor
+   Note: the file is parsed according to keywords, after the keyword,
+         the values need to come in the correct sequence */
+
+/* format: keyword, <list of joint names for a processor> */
+
+task_servo    
+              R_SFE  R_SAA  R_HR  R_EB  R_WR  R_WFE  R_WAA R_FR R_MF R_RF R_LF
+task_sim_servo    
+              R_SFE  R_SAA  R_HR  R_EB  R_WR  R_WFE  R_WAA R_FR R_MF R_RF R_LF
+motor_servo
+              R_SFE  R_SAA  R_HR  R_EB  R_WR  R_WFE  R_WAA R_FR R_MF R_RF R_LF
+motor_sim_servo
+              R_SFE  R_SAA  R_HR  R_EB  R_WR  R_WFE  R_WAA R_FR R_MF R_RF R_LF
+vision_servo
+vision_sim_servo
+
+

@@ -1,0 +1,24 @@
+
+/* setSafetyLimits(bus, joint rad/s, tip m/s, elbow m/s);
+   BTCLIENT ignores the joint and tip velocity limits and
+   the elbow velocity provided is used for all three limits. */
+MAX_VELOCITY 7 7 7
+
+/* Disable velocity limit */
+VELOCITY_WARNING 0
+
+/* Set the puck torque safety limits ().
+   Note: The pucks are limited internally to 3441 (see 'MT' in btsystem.c) 
+   Note: BTCLIENT bounds the outbound torque to 8191, so entering a
+   value of 9000 for TORQUE_ERROR would tell the safety system to never 
+   register a critical fault. */
+TORQUE_WARN 9000
+TORQUE_ERR  9000
+
+/*   setProperty(0, 1, MT, FALSE, 4860); // Cable limit = 4860
+   setProperty(0, 2, MT, FALSE, 7500); // Cable limit = 4860
+   setProperty(0, 3, MT, FALSE, 7500); // Cable limit = 4860
+   setProperty(0, 4, MT, FALSE, 4320); // Cable limit = 4320
+   setProperty(0, 5, MT, FALSE, 3900); // Cable limit = 3900
+   setProperty(0, 6, MT, FALSE, 3900); // Cable limit = 3900
+   setProperty(0, 7, MT, FALSE, 1600); // J7 Gears (max stall)*/
