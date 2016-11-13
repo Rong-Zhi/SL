@@ -1,0 +1,32 @@
+1. to initialization a git
+	
+	git init
+
+2. to know the status of current repository
+	
+	git status
+
+3. to add new files or files which haven been updated or modified.
+
+	git add .
+	git add helloworl.c
+
+4. to commit a new added file
+
+	git commit -m "Hello my commit."
+
+5. to push to my master branch
+
+	git push -u origin master
+
+6. to add a new branch
+
+	git branch version.2
+
+7. to know which branch am I
+
+	git branch
+
+8. to checkout to another branch(master)
+
+	git checkout master
